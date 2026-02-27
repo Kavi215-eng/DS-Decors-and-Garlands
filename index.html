@@ -55,19 +55,27 @@
 
   <!-- Gallery -->
   <section id="gallery" class="py-12 bg-pink-100">
-    <h2 class="text-3xl font-bold text-center mb-8">Gallery / படங்கள்</h2>
-    <div class="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto px-4">
-      <img src="gallery1.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Garland 1">
-      <img src="gallery2.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Garland 2">
-      <img src="gallery3.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Garland 3">
-      <img src="gallery4.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Garland 4">
-      <img src="gallery5.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Stage Decoration">
-      <img src="gallery6.jpg" class="rounded-xl shadow-lg h-64 w-full object-cover hover:scale-105 transition" alt="Decoration Work">
+  <h2 class="text-3xl font-bold text-center mb-8">Gallery / படங்கள்</h2>
+
+  <div class="carousel-container relative max-w-4xl mx-auto overflow-hidden rounded-xl shadow-lg">
+
+    <div class="carousel-slide flex transition-transform duration-500" id="carousel">
+
+      <img src="gallery1.jpg" class="w-full flex-shrink-0">
+      <img src="gallery2.jpg" class="w-full flex-shrink-0">
+      <img src="gallery3.jpg" class="w-full flex-shrink-0">
+      <img src="gallery4.jpg" class="w-full flex-shrink-0">
+      <img src="gallery5.jpg" class="w-full flex-shrink-0">
+
     </div>
-      <div class="bg-white h-48 rounded-xl shadow flex items-center justify-center">Upload Photo</div>
-      <div class="bg-white h-48 rounded-xl shadow flex items-center justify-center">Upload Photo</div>
-    </div>
-  </section>
+
+    <button onclick="prevSlide()" class="absolute top-1/2 left-2 bg-white px-3 py-1 rounded shadow">◀</button>
+
+    <button onclick="nextSlide()" class="absolute top-1/2 right-2 bg-white px-3 py-1 rounded shadow">▶</button>
+
+  </div>
+
+</section>
 
   <!-- Contact -->
   <section id="contact" class="py-12 max-w-4xl mx-auto text-center">
@@ -89,5 +97,23 @@
     <p>© 2026 DS Decors and Garlands. Proprietor: S. Satheesh Kumar. All rights reserved.</p>
   </footer>
 
+<script>
+let index = 0;
+const carousel = document.getElementById("carousel");
+
+function nextSlide() {
+  index++;
+  if(index >= carousel.children.length) index = 0;
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function prevSlide() {
+  index--;
+  if(index < 0) index = carousel.children.length - 1;
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+setInterval(nextSlide, 3000);
+</script>
 </body>
 </html>
