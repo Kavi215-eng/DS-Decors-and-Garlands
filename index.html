@@ -150,6 +150,29 @@ from{opacity:0; transform:translateX(-50px);}
 to{opacity:1; transform:translateX(0);}
 }
 
+#lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.gallery img{
+cursor:pointer;
+}
+
 </style>
 
 </head>
@@ -217,12 +240,13 @@ to{opacity:1; transform:translateX(0);}
 <h2>Our Work Gallery 🖼🎥</h2>
 
 <!-- Images -->
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
-<img src="photo5.jpg">
-<img src="photo6.jpg">
+<img src="photo1.jpg" onclick="openImage(this.src)">
+<img src="photo2.jpg" onclick="openImage(this.src)">
+<img src="photo3.jpg" onclick="openImage(this.src)">
+<img src="photo4.jpg" onclick="openImage(this.src)">
+<img src="photo5.jpg" onclick="openImage(this.src)">
+<img src="photo6.jpg" onclick="openImage(this.src)">
+
 
 <br><br>
 
@@ -235,6 +259,13 @@ to{opacity:1; transform:translateX(0);}
 <video width="300" controls>
   <source src="video2.mp4" type="video/mp4">
 </video>
+
+<h3>Decoration Videos Youtube 🎥</h3>
+
+<iframe width="350" height="250"
+src="http://www.youtube.com/@satheeshsk3893"
+allowfullscreen>
+</iframe>
 
 </section>
 <!-- CONTACT -->
@@ -273,6 +304,23 @@ index++;
 if(index >= images.length){ index = 0; }
 document.getElementById("slide").src = images[index];
 }, 2000);
+</script>
+
+<div id="lightbox" onclick="closeImage()">
+  <img id="lightbox-img">
+</div>
+
+<script>
+
+function openImage(src){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=src;
+}
+
+function closeImage(){
+document.getElementById("lightbox").style.display="none";
+}
+
 </script>
 
 </body>
